@@ -1,0 +1,31 @@
+# Node / React / Vite
+node_modules/
+client/node_modules/
+client/dist/
+client/dist-ssr/
+
+# Java / Spring / Maven
+target/
+server/target/
+
+# Logs / crash files
+*.log
+hs_err_pid*
+
+# Environment
+.env
+.env.*
+client/.env
+client/.env.*
+server/.env
+server/.env.*
+
+# IDE
+.idea/
+.vscode/
+**/.idea/
+**/.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

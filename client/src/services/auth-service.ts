@@ -1,0 +1,21 @@
+import type { IUserRegister, IUserLogin, IResponse } from "@/commons/types";
+import { api } from "@/lib/axios";
+
+const signup = async (user: IUserRegister): Promise<IResponse> => {
+    const data = await api.post("/users", user);
+    return { status: 200, success: true, message: "Usuário cadastrado com sucesso", data: data.data };
+};
+
+const login = async (user: IUserLogin) => {
+    let response = {} as IResponse;
+    try {
+        const data = await api.post("/login", user);
+        response = { status: 200, success: true, message: "Login bem-sucedido", data: data.data };
+    } catch (err: any) {
+        response = { status: 401, success: false, message: "Usuário ou senha inválidos", data: err.response.data };
+    }
+    return response;
+};
+
+const AuthService = { signup, login };
+export default AuthService;
