@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation, useSearchParams, useNavigate } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import CarouselComponent from "@/components/carousel";
 import ProductService from "@/services/product-service";
 import type { IProduct, ICategory } from "@/commons/types";
@@ -8,7 +8,6 @@ import { ProductCard } from "@/components/product-card";
 const HomePage = () => {
     const [productsByCategory, setProductsByCategory] = useState<{ category: ICategory; products: IProduct[] }[]>([]);
     const [loading, setLoading] = useState(true);
-    const { hash } = useLocation();
     const [searchParams] = useSearchParams();
     const categoryId = searchParams.get("categoryId");
     const navigate = useNavigate();
@@ -16,12 +15,6 @@ const HomePage = () => {
     const visibleCategories = categoryId
         ? productsByCategory.filter(({ category }) => category.id?.toString() === categoryId)
         : productsByCategory;
-
-    useEffect(() => {
-        if (!hash || loading) return;
-        const el = document.querySelector(hash);
-        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, [hash, loading]);
 
     useEffect(() => {
         const loadData = async () => {

@@ -4,7 +4,6 @@ import { RegisterPage } from "@/pages/register";
 import HomePage from "@/pages/home";
 import {Layout} from "@/components/layout";
 import { NotFound } from "@/pages/not-found";
-import {ProductView} from "@/pages/product-view";
 import { ProductDetail } from "@/pages/product-detail";
 import { CartPage } from "@/pages/cart";
 import { RequireAuth } from "@/components/require-auth";
@@ -22,7 +21,6 @@ export function AppRoutes() {
                 <Route path="login" element={<LoginPage/>}/>
                 <Route path="register" element={<RegisterPage/>}/>
                 <Route path="home" element={<HomePage/>}/>
-                <Route path="products/view" element={<ProductView />} />
                 <Route path="product/:id" element={<ProductDetail />} />
                 <Route path="cart" element={<CartPage />} />
 

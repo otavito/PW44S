@@ -1,7 +1,6 @@
-import { createContext, useState, useEffect, useRef, useContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import type { ICartItem, IProduct } from "@/commons/types";
-import { AuthContext } from "@/context/AuthContext";
 
 interface CartContextType {
     items: ICartItem[];
@@ -19,34 +18,17 @@ interface CartProviderProps {
 export const CartContext = createContext({} as CartContextType);
 
 export const CartProvider = ({ children }: CartProviderProps) => {
-    const { authenticatedUser } = useContext(AuthContext);
-    const [items, setItems] = useState<ICartItem[]>([]);
-    // Ref keeps the current userId in sync for the save effect without causing
-    // a race condition where the old user's items are written to the new user's key.
-    const userIdRef = useRef<number | undefined>(undefined);
-
-    // Load the correct cart whenever the authenticated user changes
-    useEffect(() => {
-        const userId = authenticatedUser?.id;
-        userIdRef.current = userId;
-        if (userId !== undefined) {
-            try {
-                const raw = localStorage.getItem(`cart_${userId}`);
-                setItems(raw ? JSON.parse(raw) : []);
-            } catch {
-                setItems([]);
-            }
-        } else {
-            setItems([]);
+    const [items, setItems] = useState<ICartItem[]>(() => {
+        try {
+            const raw = localStorage.getItem("cart");
+            return raw ? JSON.parse(raw) : [];
+        } catch {
+            return [];
         }
-    }, [authenticatedUser?.id]);
+    });
 
-    // Persist cart to localStorage whenever items change
     useEffect(() => {
-        const userId = userIdRef.current;
-        if (userId !== undefined) {
-            localStorage.setItem(`cart_${userId}`, JSON.stringify(items));
-        }
+        localStorage.setItem("cart", JSON.stringify(items));
     }, [items]);
 
     const addItem = (product: IProduct) => {

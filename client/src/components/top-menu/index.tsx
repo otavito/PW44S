@@ -39,19 +39,16 @@ const TopMenu: React.FC = () => {
         navigate("/login");
     };
 
-    const items: MenuItem[] = authenticated
-        ? [
-            { label: "Home", icon: "pi pi-home", command: () => navigate("/") },
-            {
-                label: "Categorias",
-                icon: "pi pi-shop",
-                items: categories.map((cat) => ({
-                    label: cat.name,
-                    command: () => navigate(`/?categoryId=${cat.id}`),
-                }))
-            }
-        ]
-        : [];
+    const items: MenuItem[] = [
+        {
+            label: "Categorias",
+            icon: "pi pi-shop",
+            items: categories.map((cat) => ({
+                label: cat.name,
+                command: () => navigate(`/?categoryId=${cat.id}`),
+            }))
+        }
+    ];
 
     const start = (
         <div

@@ -11,3 +11,8 @@ body {
   background-color: var(--surface-ground);
   color: var(--text-color);
 }
+
+.p-menubar-root-list,
+.p-submenu-list {
+    margin-bottom: 0;
+}

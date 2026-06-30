@@ -28,13 +28,13 @@ export default function App() {
             {/* Slides */}
             <div className="carousel-inner">
                 <div className="carousel-item active">
-                    <img src="/img/crepe.png" className="d-block w-100" alt="Ceramic collection" style={{ maxHeight: "400px", objectFit: "cover" }}/>
+                    <img src="/img/fraisier.png" className="d-block w-100" alt="Ceramic collection" style={{ maxHeight: "400px", objectFit: "cover" }}/>
                 </div>
                 <div className="carousel-item">
-                    <img src="/img/croissant.png" className="d-block w-100" alt="Ceramic Wheel Forming" style={{ maxHeight: "400px", objectFit: "cover" }}/>
+                    <img src="/img/tarte.png" className="d-block w-100" alt="Ceramic Wheel Forming" style={{ maxHeight: "400px", objectFit: "cover" }}/>
                 </div>
                 <div className="carousel-item">
-                    <img src="/img/moka.png" className="d-block w-100" alt="Ceramic pots with glaze" style={{ maxHeight: "400px", objectFit: "cover" }}/>
+                    <img src="/img/eclair.png" className="d-block w-100" alt="Ceramic pots with glaze" style={{ maxHeight: "400px", objectFit: "cover" }}/>
                 </div>
             </div>
 
